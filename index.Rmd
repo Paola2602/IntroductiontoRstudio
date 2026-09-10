@@ -1,0 +1,44 @@
+---
+title: "Personal Webpage"
+author: "Paola N. Kalil Rivera"
+date: "`r format(Sys.time(), '%Y-%b-%d, %I:%M %p')`"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+<center>
+<img src="20260630_174839.jpg" width="440" height="320"/>
+</center>
+
+# Hey this is my first Rmd.
+## __About me__gg
+
+* Tengo cuatro esqueletos de apoyo emocional:<br>
+  -Sprite<br>
+  -Coke<br>
+  -Pepper<br>
+  -Fanta<br>
+* Mi segundo nombre es __Nicole__<br>
+* Me gusta ir al bosque __de noche__<br>
+* Rapto ranitas de labio blanco (*Leptodactylus albilabris*) __por diversión__<br>
+
+<center>
+<img src="Ranita1.jpg" width="440" height="320"/>
+<center>
+<img src="Ranita2.jpg" width="440" height="320"/>
+</center>
+<img src="Ranita3.jpg" width="440" height="320"/>
+</center>
+
+# __Mi proyecto__
+Como parte de mi tésis, estaré realizando censos poblacionales de *Pholidoscelis wetmorei*, o siguana de cola azul puertoriqueña, dentro del Bosque Estatal de Susúa, ubicado entre los municipios de Yauco y Sabana Grande.
+
+Mi objetivo es identificar qué tipo de vegetación prefiere dentro de un mismo bosque, cómo se está distribuyendo en relación al espacio disponible y la presencia de *Pholidoscelis exsul*, la cual tiene una ventaja en cuanto a tamaño y distribución.
+
+
+
+
+
+
+
