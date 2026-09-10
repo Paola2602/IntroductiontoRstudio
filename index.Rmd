@@ -12,7 +12,7 @@ output:
 </center>
 
 # Hey this is my first Rmd.
-## __About me__gg
+## __About me__
 
 * Tengo cuatro esqueletos de apoyo emocional:<br>
   -Sprite<br>
