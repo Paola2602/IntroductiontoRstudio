@@ -15,11 +15,14 @@ output:
 ## __About me__
 
 
-* Tengo cuatro esqueletos de apoyo emocional:<br>
+* Tengo siete esqueletos de apoyo emocional:<br>
   -Sprite<br>
   -Coke<br>
   -Pepper<br>
   -Fanta<br>
+  -Dew<br>
+  -Kist<br>
+  -Ginger<br>
 * Mi segundo nombre es __Nicole__<br>
 * Me gusta ir al bosque __de noche__<br>
 * Rapto ranitas de labio blanco (*Leptodactylus albilabris*) __por diversión__<br>
@@ -36,6 +39,10 @@ output:
 Como parte de mi tésis, estaré realizando censos poblacionales de *Pholidoscelis wetmorei*, o siguana de cola azul puertoriqueña, dentro del Bosque Estatal de Susúa, ubicado entre los municipios de Yauco y Sabana Grande.
 
 Mi objetivo es identificar qué tipo de vegetación prefiere dentro de un mismo bosque, cómo se está distribuyendo en relación al espacio disponible y la presencia de *Pholidoscelis exsul*, la cual tiene una ventaja en cuanto a tamaño y distribución.
+
+
+
+# __Assignments__ 
 
 
 
