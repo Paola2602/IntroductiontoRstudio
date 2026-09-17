@@ -11,11 +11,10 @@ output:
 <img src="20260630_174839.jpg" width="440" height="320"/>
 </center>
 
-# Hey this is my first Rmd.
 ## __About me__
 
 
-* Tengo siete esqueletos de apoyo emocional:<br>
+* Tengo __siete__ esqueletos de apoyo emocional:<br>
   -Sprite<br>
   -Coke<br>
   -Pepper<br>
