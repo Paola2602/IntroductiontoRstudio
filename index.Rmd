@@ -16,9 +16,18 @@ output:
 
 * Tengo __siete__ esqueletos de apoyo emocional:<br>
   -Sprite<br>
+  <center>
+  <img src="Sprite.jpg" width="440" height="320"/>
+  </center>
   -Coke<br>
+  <center>
+  <img src="Coke.jpg" width="440" height="320"/>
+  </center>
   -Pepper<br>
   -Fanta<br>
+  <center>
+  <img src="Fanta.jpg" width="440" height="320"/>
+  </center>
   -Dew<br>
   -Kist<br>
   -Ginger<br>
@@ -45,7 +54,7 @@ Mi objetivo es identificar qué tipo de vegetación prefiere dentro de un mismo 
 
 Homework 1
 
-
+### [assignment 1](Tareas/Assignment-1.html)
 
 
 
