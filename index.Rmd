@@ -55,7 +55,5 @@ Mi objetivo es identificar qué tipo de vegetación prefiere dentro de un mismo 
 __Homework 1__
 
 ### [assignment 1](Tareas/Assignment-1.html)
-
-
-
+### [Assignment 1](Tareas/Assignment-1.html)
 
