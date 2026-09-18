@@ -351,13 +351,92 @@ display: none;
 
 <h1 class="title toc-ignore">Assignment 1</h1>
 <h4 class="author">Paola N. Kalil Rivera</h4>
-<h4 class="date">2026-Sep-17, 06:04 PM</h4>
+<h4 class="date">2026-Sep-18, 10:21 AM</h4>
 
 </div>
 
 
-<div id="hi" class="section level1">
-<h1>Hi</h1>
+<div id="r-tutorial" class="section level3">
+<h3><strong>R Tutorial</strong></h3>
+<div id="assigning-values" class="section level5">
+<h5><strong>Assigning values</strong></h5>
+<p><strong>Q1.</strong></p>
+<pre class="r"><code>height &lt;- 175
+height</code></pre>
+<pre><code>## [1] 175</code></pre>
+</div>
+<div id="simple-math" class="section level5">
+<h5><strong>Simple math</strong></h5>
+<p><strong>Q2.</strong></p>
+<pre class="r"><code>25 * 4 - 10</code></pre>
+<pre><code>## [1] 90</code></pre>
+</div>
+<div id="using-functions" class="section level5">
+<h5><strong>Using functions</strong></h5>
+<p><strong>Q3.</strong></p>
+<pre class="r"><code>sqrt(81)</code></pre>
+<pre><code>## [1] 9</code></pre>
+</div>
+<div id="character-objects" class="section level5">
+<h5><strong>Character objects</strong></h5>
+<p><strong>Q4.</strong></p>
+<pre class="r"><code>message &lt;- &quot;R is fun!&quot;
+message</code></pre>
+<pre><code>## [1] &quot;R is fun!&quot;</code></pre>
+</div>
+<div id="object-manipulation" class="section level5">
+<h5><strong>Object manipulation</strong></h5>
+<p><strong>Q5.</strong></p>
+<pre class="r"><code>a &lt;- 10
+b &lt;- 5
+c &lt;- a + b 
+c</code></pre>
+<pre><code>## [1] 15</code></pre>
+</div>
+<div id="logical-comparison" class="section level5">
+<h5><strong>Logical comparison</strong></h5>
+<p><strong>Q6.</strong></p>
+<pre class="r"><code>15 &gt; 20</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+</div>
+<div id="checking-classes" class="section level5">
+<h5><strong>Checking classes</strong></h5>
+<p><strong>Q7.</strong></p>
+<pre class="r"><code>class (&quot;Hello World&quot;)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+</div>
+<div id="code-chunk-options" class="section level5">
+<h5><strong>Code chunk options</strong></h5>
+<p><strong>Q8.</strong><br> Code chunk without changes<br></p>
+<pre class="r"><code>log(-1)</code></pre>
+<pre><code>## Warning in log(-1): NaNs produced</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<p>Code chunk modified to hide the warning<br></p>
+<pre class="r"><code>log(-1)</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<p><strong>Q9.</strong> Code chunk without changes<br></p>
+<pre class="r"><code>library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<p>Code chunk modified to hide the messages<br></p>
+<pre class="r"><code>library(dplyr)</code></pre>
+</div>
+<div id="creating-and-analyzing-a-vector" class="section level5">
+<h5><strong>Creating and analyzing a vector</strong></h5>
+<p><strong>Q10.</strong></p>
+<pre class="r"><code>grades &lt;- c(80,90,75,95,85)
+mean(grades)</code></pre>
+<pre><code>## [1] 85</code></pre>
+<pre class="r"><code>average &lt;- mean(grades)
+average</code></pre>
+<pre><code>## [1] 85</code></pre>
+</div>
 </div>
 
 
