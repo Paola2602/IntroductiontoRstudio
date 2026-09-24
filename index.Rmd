@@ -17,31 +17,45 @@ output:
 * Tengo __siete__ esqueletos de apoyo emocional:<br>
   -Sprite<br>
   <center>
-  <img src="Sprite.jpg" width="440" height="320"/>
+  <img src="Sprite.jpg" width="340" height="320"/>
   </center>
   -Coke<br>
   <center>
-  <img src="Coke.jpg" width="440" height="320"/>
+  <img src="Coke.jpg" width="340" height="320"/>
   </center>
   -Pepper<br>
   -Fanta<br>
   <center>
-  <img src="Fanta.jpg" width="440" height="320"/>
+  <img src="Fanta.jpg" width="340" height="320"/>
   </center>
   -Dew<br>
+  <center>
+  <img src="Dew.jpg" width="340" height="320"/>
+  </center>
   -Kist<br>
+  <center>
+  <img src="Kist.jpg" width="340" height="320"/>
+  </center>
   -Ginger<br>
+  <center>
+  <img src="Ginger.jpg" width="340" height="320"/>
+  </center>
 * Mi segundo nombre es __Nicole__<br>
 * Me gusta ir al bosque __de noche__<br>
 * Rapto ranitas de labio blanco (*Leptodactylus albilabris*) __por diversión__<br>
 
 <center>
 <img src="Ranita1.jpg" width="440" height="320"/>
+</center>
+
 <center>
 <img src="Ranita2.jpg" width="440" height="320"/>
 </center>
+
+<center>
 <img src="Ranita3.jpg" width="440" height="320"/>
 </center>
+
 
 # __Mi proyecto__
 Como parte de mi tésis, estaré realizando censos poblacionales de *Pholidoscelis wetmorei*, o siguana de cola azul puertoriqueña, dentro del Bosque Estatal de Susúa, ubicado entre los municipios de Yauco y Sabana Grande.
