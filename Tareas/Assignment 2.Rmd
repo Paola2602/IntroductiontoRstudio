@@ -1,0 +1,8 @@
+---
+title: "Assignment 2"
+author: "Paola N. Kalil Rivera"
+date: "`r format(Sys.time(), '%Y-%b-%d, %I:%M %p')`"
+output: html_document
+---
+
+### __R Tutorial__
