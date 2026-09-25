@@ -6,3 +6,103 @@ output: html_document
 ---
 
 ### __R Tutorial__
+```{r, message=FALSE}
+library(dplyr)
+```
+```{r}
+library(gapminder)
+```
+```{r}
+data(gapminder)
+head(gapminder)
+```
+##### __Q1.__<br>
+##### What class is the gapminder dataset?<br>
+```{r}
+class(gapminder)
+```
+##### __Q2.__<br> 
+##### Filter a section of gapminder with a life expectancy smaller than 29.<br>
+```{r}
+filter(gapminder, lifeExp < 29)
+```
+##### __Q3.__<br>
+##### Filter the dataset for the country Rwanda and for years greater than 1979.<br>
+```{r}
+filter(gapminder, country == "Rwanda", year > 1979)
+```
+##### __Q4.__<br>
+##### Create a new dataset from gapminder excluding the column gdpPercap.<br>
+__a.__ Method 1
+```{r}
+Newgapminder <- gapminder |> 
+  select(country,
+         continent,
+         year,
+         lifeExp,
+         pop)
+Newgapminder
+```
+__b.__ Method 2
+```{r}
+Ngp <- gapminder |> 
+  select(!(gdpPercap))
+Ngp
+```
+__c.__ Method 3
+```{r}
+Ngp2 <- gapminder |> 
+  select(-gdpPercap)
+Ngp2
+```
+__Observations:__ Even tho I would get the same result, I wanted to try different variations of the function. Methods 2 and 3 decreased the amount of text required in the function.<br>
+
+##### __Q5.__<br>
+##### Arrange the dataset in ascending order of lifeExp.<br>
+```{r}
+Newgapminder |> arrange(lifeExp)
+```
+##### __Q6.__<br>
+##### Arrange the dataset in descending order of lifeExp.<br>
+```{r}
+Newgapminder |> arrange(desc(lifeExp))
+```
+##### __Q7.__<br>
+##### Create a new dataset with only the columns year and lifeExp.<br>
+```{r}
+Newgap <- gapminder |> 
+  select(year,
+         lifeExp)
+Newgap
+```
+##### __Q8.__<br>
+##### Filter the dataset for the country Cambodia and show only the columns year and lifeExp.<br>
+```{r}
+filter(gapminder, country == "Cambodia") |> 
+select(year, lifeExp)
+```
+__Observations:__ There is more than one way to retrieve only the year and life expectancy columns from the filtered dataset.
+At first, I forgot to put "Cambodia" in quotation marks, which caused an error. Also, by not including the |> after the filter, the command executed independently instead of being combined.<br>
+```{r}
+filter(gapminder, country == "Cambodia") |> 
+select(-country, -continent, -pop, -gdpPercap)
+```
+##### __Q9.__<br>
+##### Select only the countries in Africa.<br>
+```{r}
+filter(gapminder, continent == "Africa") |> 
+  select(country)
+```
+##### __Q10.__<br>
+##### Create a new column called lifeExp_months that shows life expectancy in months.<br>
+__a.__ New column alongside all of the original columns.
+```{r}
+Newminder <- gapminder |> mutate(lifeExp_months = lifeExp * 12)
+Newminder |> 
+  select(lifeExp_months, lifeExp, everything())
+```
+__b.__ New column alongside the original life expectancy column.
+```{r}
+Newminder |> 
+  select(lifeExp_months, lifeExp)
+```

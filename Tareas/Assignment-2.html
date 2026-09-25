@@ -351,13 +351,311 @@ display: none;
 
 <h1 class="title toc-ignore">Assignment 2</h1>
 <h4 class="author">Paola N. Kalil Rivera</h4>
-<h4 class="date">2026-Sep-24, 04:24 PM</h4>
+<h4 class="date">2026-Sep-25, 02:04 PM</h4>
 
 </div>
 
 
 <div id="r-tutorial" class="section level3">
 <h3><strong>R Tutorial</strong></h3>
+<pre class="r"><code>library(dplyr)</code></pre>
+<pre class="r"><code>library(gapminder)</code></pre>
+<pre class="r"><code>data(gapminder)
+head(gapminder)</code></pre>
+<pre><code>## # A tibble: 6 × 6
+##   country     continent  year lifeExp      pop gdpPercap
+##   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+## 1 Afghanistan Asia       1952    28.8  8425333      779.
+## 2 Afghanistan Asia       1957    30.3  9240934      821.
+## 3 Afghanistan Asia       1962    32.0 10267083      853.
+## 4 Afghanistan Asia       1967    34.0 11537966      836.
+## 5 Afghanistan Asia       1972    36.1 13079460      740.
+## 6 Afghanistan Asia       1977    38.4 14880372      786.</code></pre>
+<div id="q1." class="section level5">
+<h5><strong>Q1.</strong><br></h5>
+</div>
+<div id="what-class-is-the-gapminder-dataset" class="section level5">
+<h5>What class is the gapminder dataset?<br></h5>
+<pre class="r"><code>class(gapminder)</code></pre>
+<pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+</div>
+<div id="q2." class="section level5">
+<h5><strong>Q2.</strong><br></h5>
+</div>
+<div id="filter-a-section-of-gapminder-with-a-life-expectancy-smaller-than-29." class="section level5">
+<h5>Filter a section of gapminder with a life expectancy smaller than
+29.<br></h5>
+<pre class="r"><code>filter(gapminder, lifeExp &lt; 29)</code></pre>
+<pre><code>## # A tibble: 2 × 6
+##   country     continent  year lifeExp     pop gdpPercap
+##   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;     &lt;dbl&gt;
+## 1 Afghanistan Asia       1952    28.8 8425333      779.
+## 2 Rwanda      Africa     1992    23.6 7290203      737.</code></pre>
+</div>
+<div id="q3." class="section level5">
+<h5><strong>Q3.</strong><br></h5>
+</div>
+<div id="filter-the-dataset-for-the-country-rwanda-and-for-years-greater-than-1979." class="section level5">
+<h5>Filter the dataset for the country Rwanda and for years greater than
+1979.<br></h5>
+<pre class="r"><code>filter(gapminder, country == &quot;Rwanda&quot;, year &gt; 1979)</code></pre>
+<pre><code>## # A tibble: 6 × 6
+##   country continent  year lifeExp     pop gdpPercap
+##   &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;     &lt;dbl&gt;
+## 1 Rwanda  Africa     1982    46.2 5507565      882.
+## 2 Rwanda  Africa     1987    44.0 6349365      848.
+## 3 Rwanda  Africa     1992    23.6 7290203      737.
+## 4 Rwanda  Africa     1997    36.1 7212583      590.
+## 5 Rwanda  Africa     2002    43.4 7852401      786.
+## 6 Rwanda  Africa     2007    46.2 8860588      863.</code></pre>
+</div>
+<div id="q4." class="section level5">
+<h5><strong>Q4.</strong><br></h5>
+</div>
+<div id="create-a-new-dataset-from-gapminder-excluding-the-column-gdppercap." class="section level5">
+<h5>Create a new dataset from gapminder excluding the column
+gdpPercap.<br></h5>
+<p><strong>a.</strong> Method 1</p>
+<pre class="r"><code>Newgapminder &lt;- gapminder |&gt; 
+  select(country,
+         continent,
+         year,
+         lifeExp,
+         pop)
+Newgapminder</code></pre>
+<pre><code>## # A tibble: 1,704 × 5
+##    country     continent  year lifeExp      pop
+##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;
+##  1 Afghanistan Asia       1952    28.8  8425333
+##  2 Afghanistan Asia       1957    30.3  9240934
+##  3 Afghanistan Asia       1962    32.0 10267083
+##  4 Afghanistan Asia       1967    34.0 11537966
+##  5 Afghanistan Asia       1972    36.1 13079460
+##  6 Afghanistan Asia       1977    38.4 14880372
+##  7 Afghanistan Asia       1982    39.9 12881816
+##  8 Afghanistan Asia       1987    40.8 13867957
+##  9 Afghanistan Asia       1992    41.7 16317921
+## 10 Afghanistan Asia       1997    41.8 22227415
+## # ℹ 1,694 more rows</code></pre>
+<p><strong>b.</strong> Method 2</p>
+<pre class="r"><code>Ngp &lt;- gapminder |&gt; 
+  select(!(gdpPercap))
+Ngp</code></pre>
+<pre><code>## # A tibble: 1,704 × 5
+##    country     continent  year lifeExp      pop
+##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;
+##  1 Afghanistan Asia       1952    28.8  8425333
+##  2 Afghanistan Asia       1957    30.3  9240934
+##  3 Afghanistan Asia       1962    32.0 10267083
+##  4 Afghanistan Asia       1967    34.0 11537966
+##  5 Afghanistan Asia       1972    36.1 13079460
+##  6 Afghanistan Asia       1977    38.4 14880372
+##  7 Afghanistan Asia       1982    39.9 12881816
+##  8 Afghanistan Asia       1987    40.8 13867957
+##  9 Afghanistan Asia       1992    41.7 16317921
+## 10 Afghanistan Asia       1997    41.8 22227415
+## # ℹ 1,694 more rows</code></pre>
+<p><strong>c.</strong> Method 3</p>
+<pre class="r"><code>Ngp2 &lt;- gapminder |&gt; 
+  select(-gdpPercap)
+Ngp2</code></pre>
+<pre><code>## # A tibble: 1,704 × 5
+##    country     continent  year lifeExp      pop
+##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;
+##  1 Afghanistan Asia       1952    28.8  8425333
+##  2 Afghanistan Asia       1957    30.3  9240934
+##  3 Afghanistan Asia       1962    32.0 10267083
+##  4 Afghanistan Asia       1967    34.0 11537966
+##  5 Afghanistan Asia       1972    36.1 13079460
+##  6 Afghanistan Asia       1977    38.4 14880372
+##  7 Afghanistan Asia       1982    39.9 12881816
+##  8 Afghanistan Asia       1987    40.8 13867957
+##  9 Afghanistan Asia       1992    41.7 16317921
+## 10 Afghanistan Asia       1997    41.8 22227415
+## # ℹ 1,694 more rows</code></pre>
+<p><strong>Observations:</strong> Even tho I would get the same result,
+I wanted to try different variations of the function. Methods 2 and 3
+decreased the amount of text required in the function.<br></p>
+</div>
+<div id="q5." class="section level5">
+<h5><strong>Q5.</strong><br></h5>
+</div>
+<div id="arrange-the-dataset-in-ascending-order-of-lifeexp." class="section level5">
+<h5>Arrange the dataset in ascending order of lifeExp.<br></h5>
+<pre class="r"><code>Newgapminder |&gt; arrange(lifeExp)</code></pre>
+<pre><code>## # A tibble: 1,704 × 5
+##    country      continent  year lifeExp     pop
+##    &lt;fct&gt;        &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;
+##  1 Rwanda       Africa     1992    23.6 7290203
+##  2 Afghanistan  Asia       1952    28.8 8425333
+##  3 Gambia       Africa     1952    30    284320
+##  4 Angola       Africa     1952    30.0 4232095
+##  5 Sierra Leone Africa     1952    30.3 2143249
+##  6 Afghanistan  Asia       1957    30.3 9240934
+##  7 Cambodia     Asia       1977    31.2 6978607
+##  8 Mozambique   Africa     1952    31.3 6446316
+##  9 Sierra Leone Africa     1957    31.6 2295678
+## 10 Burkina Faso Africa     1952    32.0 4469979
+## # ℹ 1,694 more rows</code></pre>
+</div>
+<div id="q6." class="section level5">
+<h5><strong>Q6.</strong><br></h5>
+</div>
+<div id="arrange-the-dataset-in-descending-order-of-lifeexp." class="section level5">
+<h5>Arrange the dataset in descending order of lifeExp.<br></h5>
+<pre class="r"><code>Newgapminder |&gt; arrange(desc(lifeExp))</code></pre>
+<pre><code>## # A tibble: 1,704 × 5
+##    country          continent  year lifeExp       pop
+##    &lt;fct&gt;            &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;     &lt;int&gt;
+##  1 Japan            Asia       2007    82.6 127467972
+##  2 Hong Kong, China Asia       2007    82.2   6980412
+##  3 Japan            Asia       2002    82   127065841
+##  4 Iceland          Europe     2007    81.8    301931
+##  5 Switzerland      Europe     2007    81.7   7554661
+##  6 Hong Kong, China Asia       2002    81.5   6762476
+##  7 Australia        Oceania    2007    81.2  20434176
+##  8 Spain            Europe     2007    80.9  40448191
+##  9 Sweden           Europe     2007    80.9   9031088
+## 10 Israel           Asia       2007    80.7   6426679
+## # ℹ 1,694 more rows</code></pre>
+</div>
+<div id="q7." class="section level5">
+<h5><strong>Q7.</strong><br></h5>
+</div>
+<div id="create-a-new-dataset-with-only-the-columns-year-and-lifeexp." class="section level5">
+<h5>Create a new dataset with only the columns year and
+lifeExp.<br></h5>
+<pre class="r"><code>Newgap &lt;- gapminder |&gt; 
+  select(year,
+         lifeExp)
+Newgap</code></pre>
+<pre><code>## # A tibble: 1,704 × 2
+##     year lifeExp
+##    &lt;int&gt;   &lt;dbl&gt;
+##  1  1952    28.8
+##  2  1957    30.3
+##  3  1962    32.0
+##  4  1967    34.0
+##  5  1972    36.1
+##  6  1977    38.4
+##  7  1982    39.9
+##  8  1987    40.8
+##  9  1992    41.7
+## 10  1997    41.8
+## # ℹ 1,694 more rows</code></pre>
+</div>
+<div id="q8." class="section level5">
+<h5><strong>Q8.</strong><br></h5>
+</div>
+<div id="filter-the-dataset-for-the-country-cambodia-and-show-only-the-columns-year-and-lifeexp." class="section level5">
+<h5>Filter the dataset for the country Cambodia and show only the
+columns year and lifeExp.<br></h5>
+<pre class="r"><code>filter(gapminder, country == &quot;Cambodia&quot;) |&gt; 
+select(year, lifeExp)</code></pre>
+<pre><code>## # A tibble: 12 × 2
+##     year lifeExp
+##    &lt;int&gt;   &lt;dbl&gt;
+##  1  1952    39.4
+##  2  1957    41.4
+##  3  1962    43.4
+##  4  1967    45.4
+##  5  1972    40.3
+##  6  1977    31.2
+##  7  1982    51.0
+##  8  1987    53.9
+##  9  1992    55.8
+## 10  1997    56.5
+## 11  2002    56.8
+## 12  2007    59.7</code></pre>
+<p><strong>Observations:</strong> There is more than one way to retrieve
+only the year and life expectancy columns from the filtered dataset. At
+first, I forgot to put “Cambodia” in quotation marks, which caused an
+error. Also, by not including the |&gt; after the filter, the command
+executed independently instead of being combined.<br></p>
+<pre class="r"><code>filter(gapminder, country == &quot;Cambodia&quot;) |&gt; 
+select(-country, -continent, -pop, -gdpPercap)</code></pre>
+<pre><code>## # A tibble: 12 × 2
+##     year lifeExp
+##    &lt;int&gt;   &lt;dbl&gt;
+##  1  1952    39.4
+##  2  1957    41.4
+##  3  1962    43.4
+##  4  1967    45.4
+##  5  1972    40.3
+##  6  1977    31.2
+##  7  1982    51.0
+##  8  1987    53.9
+##  9  1992    55.8
+## 10  1997    56.5
+## 11  2002    56.8
+## 12  2007    59.7</code></pre>
+</div>
+<div id="q9." class="section level5">
+<h5><strong>Q9.</strong><br></h5>
+</div>
+<div id="select-only-the-countries-in-africa." class="section level5">
+<h5>Select only the countries in Africa.<br></h5>
+<pre class="r"><code>filter(gapminder, continent == &quot;Africa&quot;) |&gt; 
+  select(country)</code></pre>
+<pre><code>## # A tibble: 624 × 1
+##    country
+##    &lt;fct&gt;  
+##  1 Algeria
+##  2 Algeria
+##  3 Algeria
+##  4 Algeria
+##  5 Algeria
+##  6 Algeria
+##  7 Algeria
+##  8 Algeria
+##  9 Algeria
+## 10 Algeria
+## # ℹ 614 more rows</code></pre>
+</div>
+<div id="q10." class="section level5">
+<h5><strong>Q10.</strong><br></h5>
+</div>
+<div id="create-a-new-column-called-lifeexp_months-that-shows-life-expectancy-in-months." class="section level5">
+<h5>Create a new column called lifeExp_months that shows life expectancy
+in months.<br></h5>
+<p><strong>a.</strong> New column alongside all of the original
+columns.</p>
+<pre class="r"><code>Newminder &lt;- gapminder |&gt; mutate(lifeExp_months = lifeExp * 12)
+Newminder |&gt; 
+  select(lifeExp_months, lifeExp, everything())</code></pre>
+<pre><code>## # A tibble: 1,704 × 7
+##    lifeExp_months lifeExp country     continent  year      pop gdpPercap
+##             &lt;dbl&gt;   &lt;dbl&gt; &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;    &lt;int&gt;     &lt;dbl&gt;
+##  1           346.    28.8 Afghanistan Asia       1952  8425333      779.
+##  2           364.    30.3 Afghanistan Asia       1957  9240934      821.
+##  3           384.    32.0 Afghanistan Asia       1962 10267083      853.
+##  4           408.    34.0 Afghanistan Asia       1967 11537966      836.
+##  5           433.    36.1 Afghanistan Asia       1972 13079460      740.
+##  6           461.    38.4 Afghanistan Asia       1977 14880372      786.
+##  7           478.    39.9 Afghanistan Asia       1982 12881816      978.
+##  8           490.    40.8 Afghanistan Asia       1987 13867957      852.
+##  9           500.    41.7 Afghanistan Asia       1992 16317921      649.
+## 10           501.    41.8 Afghanistan Asia       1997 22227415      635.
+## # ℹ 1,694 more rows</code></pre>
+<p><strong>b.</strong> New column alongside the original life expectancy
+column.</p>
+<pre class="r"><code>Newminder |&gt; 
+  select(lifeExp_months, lifeExp)</code></pre>
+<pre><code>## # A tibble: 1,704 × 2
+##    lifeExp_months lifeExp
+##             &lt;dbl&gt;   &lt;dbl&gt;
+##  1           346.    28.8
+##  2           364.    30.3
+##  3           384.    32.0
+##  4           408.    34.0
+##  5           433.    36.1
+##  6           461.    38.4
+##  7           478.    39.9
+##  8           490.    40.8
+##  9           500.    41.7
+## 10           501.    41.8
+## # ℹ 1,694 more rows</code></pre>
+</div>
 </div>
 
 
