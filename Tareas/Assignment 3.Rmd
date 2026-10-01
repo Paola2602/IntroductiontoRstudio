@@ -1,0 +1,38 @@
+---
+title: "Assignment 3"
+author: "Paola N. Kalil Rivera"
+date: "`r format(Sys.time(), '%Y-%b-%d, %I:%M %p')`"
+output: html_document
+---
+
+### __R Tutorial__
+
+##### __Q1.__<br>
+texto<br>
+
+##### __Q2.__<br>
+texto<br>
+
+##### __Q3.__<br>
+texto<br>
+
+##### __Q4.__<br>
+texto<br>
+
+##### __Q5.__<br>
+texto<br>
+
+##### __Q6.__<br>
+texto<br>
+
+##### __Q7.__<br>
+texto<br>
+
+##### __Q8.__<br>
+texto<br>
+
+##### __Q9.__<br>
+texto<br>
+
+##### __Q10.__<br>
+texto<br>
