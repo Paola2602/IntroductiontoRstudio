@@ -6,33 +6,124 @@ output: html_document
 ---
 
 ### __R Tutorial__
+```{r}
+library(ggplot2)
+```
 
+```{r}
+data("trees")
+head(trees)
+```
 ##### __Q1.__<br>
-texto<br>
+__Create a histogram showing the distribution of Girth.__<br>
+__a.__
+```{r, message = FALSE}
+ggplot(trees, aes(Girth)) +
+  geom_histogram() +
+  labs(title = "Distribution of Girth")
+```
+
+__b.__<br>
+```{r, message = FALSE}
+color = c("lightblue")
+ggplot(trees, aes(Girth)) +
+  geom_histogram(fill = color) +
+  labs(title = "Distribution of Girth") +
+  theme_bw() +
+  theme(
+    plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+    axis.title.x = element_text(size = 14, face = "bold"),
+    axis.title.y = element_text(size = 14, face = "bold"),
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 12)
+  )
+```
 
 ##### __Q2.__<br>
-texto<br>
+__Create a histogram showing the distribution of Volume.__<br>
+__a.__<br>
+```{r, message = FALSE}
+ggplot(trees, aes(Volume)) +
+  geom_histogram() +
+  labs(title = "Distribution of Volume")
+```
+
+__b.__<br>
+```{r, message = FALSE}
+color = c("lightgreen")
+ggplot(trees, aes(Volume)) +
+  geom_histogram(fill = color) +
+  labs(title = "Distribution of Volume") +
+  theme_bw() +
+  theme(
+    plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+    axis.title.x = element_text(size = 14, face = "bold"),
+    axis.title.y = element_text(size = 14, face = "bold"),
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 12)
+  )
+```
 
 ##### __Q3.__<br>
-texto<br>
+__Create a scatterplot showing the relationship between Girth and Volume.__<br>
+__a.__<br>
+```{r}
+ggplot(trees, aes(Girth, Volume)) +
+  geom_point() +
+  labs(title = "Relationship between Girth and Volume")
+```
+
+__b.__<br>
+```{r}
+ggplot(trees, aes(Girth, Volume)) +
+  geom_point(color = "darkblue") +
+  labs(title = "Relationship between Girth and Volume") +
+  theme_bw() +
+  theme(
+    plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+    axis.title.x = element_text(size = 14, face = "bold"),
+    axis.title.y = element_text(size = 14, face = "bold"),
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 12)
+  )
+```
+
+__c.__<br>
+```{r, message = FALSE}
+ggplot(trees, aes(Girth, Volume)) +
+  geom_point(color = "darkblue") +
+  labs(title = "Relationship between Girth and Volume") +
+  geom_smooth(method = "lm", se = F, color = "darkred") +
+  theme_bw() +
+  theme(
+    plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+    axis.title.x = element_text(size = 14, face = "bold"),
+    axis.title.y = element_text(size = 14, face = "bold"),
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 12)
+  )
+```
+
+
+
+
 
 ##### __Q4.__<br>
-texto<br>
+__Use the Shapiro–Wilk test to assess whether Volume is normally distributed. Report the p-value and state whether the data are normally distributed.__<br>
+```{r, warning = FALSE}
+TV <- aov(Volume ~ Volume, data = trees)
+summary(TV)
+resid_anova <- residuals(TV)
+shapiro.test(resid_anova)
+```
+__Comment:__ Since the p-value (p = 0.003579) is less than 0.05, the null hypothesis is rejected and it is determined that the data do not follow a normal distribution.
 
 ##### __Q5.__<br>
-texto<br>
-
-##### __Q6.__<br>
-texto<br>
-
-##### __Q7.__<br>
-texto<br>
-
-##### __Q8.__<br>
-texto<br>
-
-##### __Q9.__<br>
-texto<br>
-
-##### __Q10.__<br>
-texto<br>
+__Repeat the Shapiro–Wilk test for Girth. Report the p-value and state whether Girth is normally distributed.__<br>
+```{r, warning = FALSE}
+TG <- aov(Girth ~ Girth, data = trees)
+summary(TG)
+resid_anova <- residuals(TG)
+shapiro.test(resid_anova)
+```
+__Comment:__ Since the p-value (p = 0.08893) is greater than 0.05, the null hypothesis is not rejected and it is determined that the data do follow a normal distribution.
