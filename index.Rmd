@@ -66,8 +66,14 @@ Mi objetivo es identificar qué tipo de vegetación prefiere dentro de un mismo 
 
 # __Assignments__ 
 
-__Homework 1__
+__Homework 1__<br>
 
-### [Assignment 1](Tareas/Assignment-1.html)
-### [Assignment 2](Tareas/Assignment-2.html)
-### [Assignment 3](Tareas/Assignment-3.html)
+### [R Tutorial 1](Tareas/Assignment-1.html)
+
+__Homework 2__<br>
+
+### [R Tutorial 2](Tareas/Assignment-2.html)
+
+__Homework 3__<br>
+
+### [R Tutorial 3](Tareas/Assignment-3.html)
