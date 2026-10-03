@@ -104,12 +104,15 @@ ggplot(trees, aes(Girth, Volume)) +
   )
 ```
 
-
-
-
-
 ##### __Q4.__<br>
 __Use the Shapiro–Wilk test to assess whether Volume is normally distributed. Report the p-value and state whether the data are normally distributed.__<br>
+
+__a.__<br>
+```{r}
+shapiro.test(trees$Volume)
+```
+
+__b.__<br>
 ```{r, warning = FALSE}
 TV <- aov(Volume ~ Volume, data = trees)
 summary(TV)
@@ -120,6 +123,13 @@ __Comment:__ Since the p-value (p = 0.003579) is less than 0.05, the null hypoth
 
 ##### __Q5.__<br>
 __Repeat the Shapiro–Wilk test for Girth. Report the p-value and state whether Girth is normally distributed.__<br>
+
+__a.__
+```{r}
+shapiro.test(trees$Girth)
+```
+
+__b.__
 ```{r, warning = FALSE}
 TG <- aov(Girth ~ Girth, data = trees)
 summary(TG)
