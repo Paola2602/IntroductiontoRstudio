@@ -1,0 +1,8 @@
+---
+title: "Primera Evaluación"
+author: "Paola N. Kalil Rivera"
+date: "`r format(Sys.time(), '%Y-%b-%d, %I:%M %p')`"
+output: html_document
+---
+
+### __EXAMEN 1__
