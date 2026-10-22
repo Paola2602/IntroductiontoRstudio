@@ -6,3 +6,70 @@ output: html_document
 ---
 
 ### __EXAMEN 1__
+```{r, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(dplyr)
+library(aod)
+```
+```{r}
+msleep <- glimpse(msleep)
+storms <- storms
+lizards <- lizards
+```
+# __Mammals Sleep Dataset__
+```{r}
+head(msleep)
+```
+1. Use filter() to subset msleep to only animals who are awake for at least 12 hours of the day.<br>
+Usa filter() para seleccionar del dataset msleep solo los animales que están despiertos al menos 12 horas al día.<br>
+__Hint:__ “At least” like saying “greater than or equal to,” i.e. >=<br>
+__Sugerencia:__ “Al menos” significa mayor o igual a (>=).<br>
+```{r}
+  filter(msleep, awake >= 12.0)
+```
+2. Use mutate() to create a new column called percent_day_awake that gives the percentage of the day that each species spends awake. Use select() with everything() at the end to verify your calculation.<br>
+Usa mutate() para crear una nueva columna llamada percent_day_awake que muestre el porcentaje del día que cada especie permanece despierta. Usa select() con everything() al final para comprobar que tus cálculos son correctos.<br>
+__Hint:__ A day has 24 hours. The column awake indicates the average hours a species is awake per day. Calculate the percentage with (col / 24) * 100.<br>
+__Sugerencia:__ Un día tiene 24 horas. La columna awake indica cuántas horas al día, en promedio, está despierta cada especie. Calcula el porcentaje con (col / 24) * 100.<br>
+```{r}
+percent_day_awake <- msleep |> mutate(percent_day_awake = (awake /24) * 100)
+percent_day_awake |> 
+  select(percent_day_awake, awake, everything())
+```
+# __Storm Tracks Data__
+```{r}
+head(storms)
+```
+3. Use group_by() and summarise() to calculate the number of storms per year.<br>
+Agrupa los datos por año y calcula el número de tormentas que ocurrieron cada año.<br>
+__Hint:__ group_by(col) groups the rows by time, and summarise(num_storms = n()) counts how many rows (storms) there are per year.<br>
+__Sugerencia:__ group_by(col) agrupa las filas por tiempo, y summarise(num_storms = n()) cuenta cuántas filas (tormentas) hay por año.<br>
+```{r}
+storms |> 
+group_by(year) |> 
+summarise(
+  num_storms = n())
+```
+4. Use filter() to subset storms to only storms with wind speeds greater than 50 knots, then use arrange() to sort by wind descending.<br>
+Filtra el dataset para quedarte solo con tormentas que tengan velocidad de viento mayor a 50 nudos, y luego ordénalas de mayor a menor velocidad de viento.<br>
+__Hint:__ Use filter(col > 50) to select strong storms, and arrange(desc(col)) to sort the results from highest to lowest.<br>
+__Sugerencia:__ Usa filter(col > 50) para seleccionar las tormentas fuertes, y arrange(desc(col)) para ordenar los resultados de mayor a menor.<br>
+```{r}
+storms |> 
+filter(wind > 50) |> 
+arrange(desc(wind))
+```
+# __A Comparison of Site Preferences of Two Species of Lizard__
+```{r}
+head(lizards)
+```
+5. Determine which Site and Diameter combination has the highest total grahami.<br>
+Determina cuál combinación de Sitio y Diámetro tiene el total de grahami más alto.<br>
+__Hint:__ group_by(col1, col2) %>% summarise(new_var = sum(var)) %>% arrange(desc(new_var))<br>
+__Sugerencia:__ Usa group_by(col1, col2) %>% summarise(new_var = sum(var)) %>% arrange(desc(new_var))<br>
+```{r, message = FALSE}
+lizards |> 
+  group_by(Site, Diameter) |> 
+  summarise(new_var = sum(grahami)) |> 
+  arrange(desc(new_var))
+```
