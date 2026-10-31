@@ -1,0 +1,84 @@
+---
+title: "Assignment 4"
+author: "Paola N. Kalil Rivera"
+date: "`r format(Sys.time(), '%Y-%b-%d, %I:%M %p')`"
+output: html_document
+---
+
+## __R tutorial__
+### __Libraries__
+```{r, message = FALSE}
+library(tidyverse)
+library(lessR)
+library(readxl)
+library(BSDA)
+```
+
+```{r}
+ButterPest <- read_excel("C:/Users/Paola N Kalil Rivera/OneDrive - University of Puerto Rico/Documents/R Studio/IntroductiontoRstudio/butterflies_pesticides.xlsx")
+
+head(ButterPest)
+```
+
+##### __Q1.__<br>
+__Normality test / Prueba de normalidad (10pts)__<br>
+```{r}
+shapiro.test(ButterPest$`Wing Length`)
+```
+
+The Shapiro–Wilk test yielded W = 0.97134 and p = 0.06913. Since p > 0.05, we fail to reject the null hypothesis, indicating that the data do not significantly deviate from a normal distribution.<br>
+
+##### __Q2.__<br>
+__Equality of variances test / Prueba de igualdad de varianzas(10pts)__<br>
+```{r}
+var.test(`Wing Length`~Group,
+         ButterPest)
+```
+
+The variance test yielded F = 0.40274 with 39 and 39 degrees of freedom and p = 0.005512. Since p < 0.05, we reject the null hypothesis of equal variances, indicating that the groups have significantly different variances.<br>
+
+##### __Q3.__<br>
+__Statistical test / Prueba estadística (20pts)__<br>
+```{r}
+t.test(filter(ButterPest, Group == "group1")$`Wing Length`,
+       filter(ButterPest, Group == "group2")$`Wing Length`,
+       alternative = 'two.side',
+       mu = 0,
+       paired = F,
+       var.equal = F)
+```
+
+The t-test yielded t = 3.9832, with 78 degrees of freedom and p = 0.0001517. Since p < 0.05, we reject the null hypothesis, indicating that there is a statistically significant difference in mean wing length between the control group and the pesticide-exposed group.<br>
+
+```{r}
+library(lsr)
+cohensD(`Wing Length`~Group, data = ButterPest)
+```
+
+The Cohens D Effect Size was d = 0.89066, which indicates a large effect.<br>
+
+##### __Q4.__<br>
+__ggplot (20pts)__<br>
+```{r}
+color = c("lightgreen")
+ggplot(ButterPest, aes(Group, `Wing Length`)) +
+  geom_boxplot(fill = color) +
+  labs(title = "Relationship between Wing Length and Exposure to Pesticides") +
+  theme_bw() +
+  theme(
+    plot.title = element_text(size = 15, face = "bold", hjust = 0.5),
+    axis.title.x = element_text(size = 14, face = "bold"),
+    axis.title.y = element_text(size = 14, face = "bold"),
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 12)
+  )
+```
+
+The boxplot shows that the control group (Group 1) has a higher median wing length than the pesticide-exposed group (Group 2). Group 2 also exhibits greater variability in wing length.<br>
+
+##### __Q5.__<br>
+__Summary paragraph / Párrafo de resumen (40pts)__<br>
+__- Write one concise paragraph summarizing your research objective, methods, statistical results, and interpretation of the findings, including whether the observed difference is statistically significant and biologically meaningful.__<br>
+__- Escriba un párrafo conciso que resuma el objetivo de la investigación, los métodos utilizados, los resultados estadísticos y la interpretación de los hallazgos, incluyendo si la diferencia observada es estadísticamente significativa y tiene relevancia biológica.__<br>
+
+The objective of this study was to determine whether pesticide exposure during the larval stage affects butterfly wing length. Wing lengths were compared between 40 control butterflies (Group 1) and 40 pesticide-exposed butterflies (Group 2). A Shapiro–Wilk test indicated no significant deviation from normality (p = 0.06913), while a variance test indicated unequal variances (p = 0.005512). The t-test proved a significant difference (t = 3.9832), (df = 78), (p = 0.0001517), with the control group showing a greater mean wing length (632.18) than the pesticide-exposed group (593.49). Cohen’s (d = 0.89) indicated a large effect size, suggesting that pesticide exposure is associated with reduced wing length, although causation depends on the experimental design.<br>
